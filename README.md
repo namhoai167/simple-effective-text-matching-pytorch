@@ -58,7 +58,7 @@ Example configuration files are provided in `configs/`:
 ## Run api (Test models)
 
 ```bash
-unicorn api:api --reload
+uvicorn api:api --reload
 ```
 
 
