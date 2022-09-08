@@ -1,7 +1,9 @@
+scikit-learn
 tqdm
 nltk
 numpy
-scikit-learn
 msgpack-python
 tensorboardX
 json5
+fastapi
+uvicorn
