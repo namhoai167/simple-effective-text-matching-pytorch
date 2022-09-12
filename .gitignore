@@ -1,5 +1,6 @@
 /data/*
-!/data/*.py
+!/data/*.py 
+!/data/*.txt
 /models/
 /resources/
 
