@@ -1,5 +1,7 @@
 ## Text_matching
-
+Calculate the similarity between the two texts.
+## Target
+Calculate the similarity between the data fields of facebook and zalo
 
 ## Installation
 ### Ubuntu (Using virtual environment)
