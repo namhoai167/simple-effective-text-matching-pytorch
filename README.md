@@ -4,12 +4,11 @@ Calculate the similarity between the two texts.
 Calculate the similarity between the data fields of facebook and zalo
 
 ## Installation
-### Ubuntu (Using virtual environment)
+### Using virtual environment(Ubuntu 20.04)
 
-```base
-# install python3
-sudo apt-get install -y python3-pip python3-dev
-# install library/framework
+Install library/framework
+```bash
+
 pip3 install -r requirements.txt 
 pip3 install torch
 ```
@@ -42,8 +41,9 @@ Move the binary file "trec_eval" to resources/.
 
 
 ### docker build 
-```base
-docker build -t text_matching .
+username: docker
+```bash
+docker build -t username/text_matching .
 
 ```
 
@@ -54,7 +54,6 @@ python3 train.py configs/main.json5
 
 ### Test service by command 
 ``` bash
- 
 # data test
 python3 evaluate.py models/snli/benchmark-0/best.pt data/snli/test.txt 
 ```
@@ -65,13 +64,13 @@ uvicorn api:api --reload
 ```
 
 ### Run service by docker
-
+username: docker
 ``` bash
-docker run -d --name text_matching -P text_matching
+docker run -d --name text_matching -P username/text_matching
 ```
 
 ## Usage
-### Format send request to API
+### Format request
 
 ------------------
 |Attribute|Type|Required|
@@ -80,13 +79,12 @@ docker run -d --name text_matching -P text_matching
 | Text2 | string | True | 
 ---------------------
 
-#### Example Request
+#### Request Example
 
 ```json
  {
   	"Text1" : "I love reading books",
 	"Text2" : "I hate reading books",
-
  }
 ```
 
@@ -107,53 +105,70 @@ docker run -d --name text_matching -P text_matching
 }
 ```
 ## File desctiption
-```base
-	configs\				#contains config data
-		data\
-			quora.json5
-			scitail.json5
-			snli.json5
-			wiki.json5
-		ablation.json5
-		debug.json5
-		default.json5
-		main.json5
-	data\					#contains .py file download data
-		prepare_quora.py
-		preqare_scitail.py
-		preqare_snli.py
-		preqare_wiki_qa.py
-		text_api.txt
-	models\ 				#contains models
-	src\		 			#contains modules of model
-		modules\
-			__init__.py
-			alignment.py
-			connection.py
-			embedding.py
-			encoder.py
-			fusion.py
-			pooling.py
-			prediction.py
-		utils\
-			__init__.py
-			loader.py
-			logger.py
-			metrics.py
-			params.py
-			registry.py
-			vocab.py
-		__init__.py
-		evaluator.py
-		interface.py
-		model.py
-		network.py
-		trainer.py
-	api.py					# run api model
-	dockerfile
-	evaluate.py
-	README.md
-	requirements.txt
-	test.py
-	train.py
+```bash
+	
+├── api.py # run api model
+├── configs #contains config data
+│   ├── ablation.json5
+│   ├── data
+│   │   ├── quora.json5
+│   │   ├── scitail.json5
+│   │   ├── snli.json5
+│   │   └── wikiqa.json5
+│   ├── debug.json5
+│   ├── default.json5
+│   └── main.json5
+├── data #contains .py file download data
+│   ├── prepare_quora.py
+│   ├── prepare_scitail.py
+│   ├── prepare_snli.py
+│   ├── prepare_wikiqa.py
+│   ├── snli
+│   │   ├── dev.txt
+│   │   ├── test.txt
+│   │   └── train.txt
+│   └── test_api.txt
+├── dockerfile
+├── evaluate.py
+├── figure.png
+├── LICENSE
+├── models #contains models
+│   ├── snli
+│   │   ├── benchmark-0
+│   │   │   ├── args.json5
+│   │   │   ├── best.pt
+│   │   │   └── log.txt
+│   │   ├── data_config.json5
+│   │   ├── embedding.msgpack
+│   │   ├── target_map.txt
+│   │   └── vocab.txt
+├── README.md
+├── requirements.txt
+├── src #contains modules of model
+│   ├── evaluator.py
+│   ├── __init__.py
+│   ├── interface.py
+│   ├── model.py
+│   ├── modules 
+│   │   ├── alignment.py
+│   │   ├── connection.py
+│   │   ├── embedding.py
+│   │   ├── encoder.py
+│   │   ├── fusion.py
+│   │   ├── __init__.py
+│   │   ├── pooling.py
+│   │   └── prediction.py
+│   ├── network.py
+│   ├── trainer.py
+│   └── utils
+│       ├── __init__.py
+│       ├── loader.py
+│       ├── logger.py
+│       ├── metrics.py
+│       ├── params.py
+│       ├── registry.py
+│       └── vocab.py
+├── test.py
+└── train.py
+
 ```
