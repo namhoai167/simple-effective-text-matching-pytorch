@@ -21,7 +21,7 @@ class Testor:
         '''
         self.model, self.checkpoint= Model.load(model_path)
         self.args = self.checkpoint['args']
-        self.data_file='./data/snli/pri.txt'
+        self.data_file='./data/test_api.txt'
         with open(self.data_file, 'w+') as f:
             f.write(data[0]+"\t"+data[1]+"\t"+'0')
         self.data=load_data(*os.path.split(self.data_file))
@@ -40,6 +40,6 @@ class Testor:
         pred, prob = self.model.test(self.inputs)
         print(prob)
         return [{
-            'Độ tương đồng': "{:.4}%".format(prob[0][0]*100),
+            'Similarities': "{:.4}%".format(prob[0][0]*100),
         }]
         
